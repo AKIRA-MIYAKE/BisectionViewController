@@ -163,13 +163,13 @@ public class BisectionViewController: UIViewController {
         case .Both:
             flag = true
         case .Primary:
-            if xDiff < 0 {
+            if yDiff < 0 {
                 flag = true
             } else {
                 flag = false
             }
         case .Secondary:
-            if xDiff > 0 {
+            if yDiff > 0 {
                 flag = true
             } else {
                 flag = false
