@@ -158,23 +158,43 @@ public class BisectionViewController: UIViewController {
         let xDiff = difference.x
         let yDiff = difference.y
         
-        let currentPrimaryViewFrame = primaryViewController.view.frame
-        let currentSecondaryViewFrame = secondaryViewController.view.frame
+        let flag: Bool
+        switch currentViewMode.value {
+        case .Both:
+            flag = true
+        case .Primary:
+            if xDiff < 0 {
+                flag = true
+            } else {
+                flag = false
+            }
+        case .Secondary:
+            if xDiff > 0 {
+                flag = true
+            } else {
+                flag = false
+            }
+        }
         
-        let primaryViewFrame = CGRectMake(
-            0,
-            0,
-            currentPrimaryViewFrame.size.width,
-            currentPrimaryViewFrame.size.height + yDiff)
-        
-        let secondaryViewFrame = CGRectMake(
-            0,
-            currentSecondaryViewFrame.origin.y + yDiff,
-            currentSecondaryViewFrame.size.width,
-            currentSecondaryViewFrame.size.height - yDiff)
-        
-        primaryViewController.view.frame = primaryViewFrame
-        secondaryViewController.view.frame = secondaryViewFrame
+        if flag {
+            let currentPrimaryViewFrame = primaryViewController.view.frame
+            let currentSecondaryViewFrame = secondaryViewController.view.frame
+            
+            let primaryViewFrame = CGRectMake(
+                0,
+                0,
+                currentPrimaryViewFrame.size.width,
+                currentPrimaryViewFrame.size.height + yDiff)
+            
+            let secondaryViewFrame = CGRectMake(
+                0,
+                currentSecondaryViewFrame.origin.y + yDiff,
+                currentSecondaryViewFrame.size.width,
+                currentSecondaryViewFrame.size.height - yDiff)
+            
+            primaryViewController.view.frame = primaryViewFrame
+            secondaryViewController.view.frame = secondaryViewFrame
+        }
     }
     
     
