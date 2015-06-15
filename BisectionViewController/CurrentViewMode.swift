@@ -22,11 +22,11 @@ public class _CurrentViewMode<E: Hashable, A>: EventEmitter<CurrentViewModeEvent
     
     public var value: ViewMode {
         willSet {
-            emit(.WillSet, argument: value)
+            emit(.WillSet, value: value)
         }
         
         didSet {
-            emit(.DidSet, argument: value)
+            emit(.DidSet, value: value)
         }
     }
     

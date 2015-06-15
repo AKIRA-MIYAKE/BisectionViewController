@@ -22,11 +22,11 @@ public class _CurrentGestureState<E: Hashable, A>: EventEmitter<CurrentGestureSt
     
     public var value: GestureState {
         willSet {
-            emit(.WillSet, argument: value)
+            emit(.WillSet, value: value)
         }
         
         didSet {
-            emit(.DidSet, argument: value)
+            emit(.DidSet, value: value)
         }
     }
     
