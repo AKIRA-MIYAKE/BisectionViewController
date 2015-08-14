@@ -7,13 +7,66 @@
 //
 
 import UIKit
+import SwiftyEvents
+
+
+public enum DisplayState {
+    case Both
+    case Primary
+    case Secondary
+}
+
+
+public enum GestureState {
+    case Began
+    case Changed
+    case Ended
+}
+
+
+public enum ViewStateEvent {
+    case DidSetDisplayState
+    case DidSetGestureState
+}
+
+public class ViewState {
+    
+    // MARK: - let
+    
+    public let emitter = EventEmitter<ViewStateEvent, ViewState>()
+    
+    
+    // MARK: - Variables
+    
+    public var displayState: DisplayState {
+        didSet {
+            emitter.emit(.DidSetDisplayState, value: self)
+        }
+    }
+    
+    public var gestureState: GestureState {
+        didSet {
+            emitter.emit(.DidSetGestureState, value: self)
+        }
+    }
+    
+    
+    // MARK: - Initialize
+    
+    public init(displayState: DisplayState) {
+        self.displayState = displayState
+        
+        gestureState = GestureState.Ended
+    }
+    
+}
+
 
 public class BisectionViewController: UIViewController {
     
     // MARK: - let
     
-    public let currentViewMode: CurrentViewMode
-    public let currentGestureState: CurrentGestureState
+    public let viewState: ViewState
     
     
     // MARK: - Variables
@@ -32,10 +85,11 @@ public class BisectionViewController: UIViewController {
         }
     }
     
-    private var isInitializedChildViewsLayout: Bool
+    
+    private var isInitialized: Bool
     
     private var panGestureRecognizer: UIPanGestureRecognizer?
-    private var translation: CGPoint
+    private var panGestureTranslation: CGPoint
     
     
     // MARK: - Initialize
@@ -43,17 +97,17 @@ public class BisectionViewController: UIViewController {
     public init(
         primaryViewController: UIViewController,
         secondaryViewController: UIViewController,
-        viewMode: ViewMode)
+        displayState: DisplayState)
     {
-        currentViewMode = CurrentViewMode(viewMode)
-        currentGestureState = CurrentGestureState()
+        viewState = ViewState(displayState: .Both)
         
         self.primaryViewController = primaryViewController
         self.secondaryViewController = secondaryViewController
         
-        isInitializedChildViewsLayout = false
+        isInitialized = false
         
-        translation = CGPointZero
+        panGestureTranslation = CGPointZero
+        
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -78,29 +132,14 @@ public class BisectionViewController: UIViewController {
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        if !isInitializedChildViewsLayout {
-            layoutChildViews(viewMode: currentViewMode.value, animated: false)
-            isInitializedChildViewsLayout = true
-        }
-    }
-    
-    public override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-        if isViewLoaded() && view.window == nil {
-            view = nil
+        if !isInitialized {
+            layoutChildViews(displayState: viewState.displayState, animated: false)
+            isInitialized = true
         }
     }
     
     
-    // MARK: - Method
-    
-    public func setViewMode(viewMode: ViewMode, animated: Bool) {
-        layoutChildViews(viewMode: viewMode, animated: animated)
-    }
-    
-    
-    // MARK: - Priavet method
+    // MARK: - Private method
     
     private func setupChildViewController(controller: UIViewController) {
         addChildViewController(controller)
@@ -114,14 +153,14 @@ public class BisectionViewController: UIViewController {
         controller.removeFromParentViewController()
     }
     
-    private func layoutChildViews(#viewMode: ViewMode, animated: Bool) {
+    private func layoutChildViews(#displayState: DisplayState, animated: Bool) {
         let width: CGFloat = view.frame.size.width
         let height: CGFloat = view.frame.size.height
         
         let primaryViewFrame: CGRect
         let secondaryViewFrame: CGRect
         
-        switch viewMode {
+        switch displayState {
         case .Both:
             primaryViewFrame = CGRectMake(0, 0, width, height / 2)
             secondaryViewFrame = CGRectMake(0, height / 2, width, height / 2)
@@ -144,107 +183,87 @@ public class BisectionViewController: UIViewController {
                     self.primaryViewController.view.frame = primaryViewFrame
                     self.secondaryViewController.view.frame = secondaryViewFrame
                 }, completion: { (completion) -> Void in
-                    self.currentViewMode.value = viewMode
+                    self.viewState.displayState = displayState
             })
         } else {
             primaryViewController.view.frame = primaryViewFrame
             secondaryViewController.view.frame = secondaryViewFrame
             
-            currentViewMode.value = viewMode
+            viewState.displayState = displayState
         }
     }
     
-    private func updateChildViewsLayout(#difference: CGPoint) {
+    private func updateChildViewsLayout(#difference: CGPoint, displayState: DisplayState) {
         let xDiff = difference.x
         let yDiff = difference.y
         
-        let flag: Bool
-        switch currentViewMode.value {
-        case .Both:
-            flag = true
-        case .Primary:
-            if yDiff < 0 {
-                flag = true
-            } else {
-                flag = false
-            }
-        case .Secondary:
-            if yDiff > 0 {
-                flag = true
-            } else {
-                flag = false
-            }
-        }
+        let currentPrimaryViewFrame = primaryViewController.view.frame
+        let currentSecondaryViewFrame = secondaryViewController.view.frame
         
-        if flag {
-            let currentPrimaryViewFrame = primaryViewController.view.frame
-            let currentSecondaryViewFrame = secondaryViewController.view.frame
-            
-            let primaryViewFrame = CGRectMake(
-                0,
-                0,
-                currentPrimaryViewFrame.size.width,
-                currentPrimaryViewFrame.size.height + yDiff)
-            
-            let secondaryViewFrame = CGRectMake(
-                0,
-                currentSecondaryViewFrame.origin.y + yDiff,
-                currentSecondaryViewFrame.size.width,
-                currentSecondaryViewFrame.size.height - yDiff)
-            
-            primaryViewController.view.frame = primaryViewFrame
-            secondaryViewController.view.frame = secondaryViewFrame
-        }
+        let primaryViewFrame = CGRectMake(
+            0,
+            0,
+            currentPrimaryViewFrame.size.width,
+            currentPrimaryViewFrame.size.height + yDiff)
+        
+        let secondaryViewFrame = CGRectMake(
+            0,
+            currentSecondaryViewFrame.origin.y + yDiff,
+            currentSecondaryViewFrame.size.width,
+            currentSecondaryViewFrame.size.height - yDiff)
+        
+        primaryViewController.view.frame = primaryViewFrame
+        secondaryViewController.view.frame = secondaryViewFrame
     }
     
     
-    // MARK: - Selector
+    // MARK: - Selecot
     
     func handlePanGestureRecognizer(recognizer: UIPanGestureRecognizer) {
         let draggingFromTopToBottom = recognizer.velocityInView(view).y > 0
         
         switch recognizer.state {
         case .Began:
-            currentGestureState.value = .Began
+            viewState.gestureState = GestureState.Began
         case .Changed:
             let currentTranslation = recognizer.translationInView(view)
             let difference = CGPointMake(
-                currentTranslation.x - translation.x,
-                currentTranslation.y - translation.y)
+                currentTranslation.x - panGestureTranslation.x,
+                currentTranslation.y - panGestureTranslation.y)
             
-            updateChildViewsLayout(difference: difference)
+            updateChildViewsLayout(difference: difference, displayState: viewState.displayState)
             
-            translation = currentTranslation
+            panGestureTranslation = currentTranslation
             
-            currentGestureState.value = .Changed
+            viewState.gestureState = GestureState.Changed
         case .Ended:
-            switch currentViewMode.value {
+            switch viewState.displayState {
             case .Both:
-                if translation.y > 0 && draggingFromTopToBottom {
-                    layoutChildViews(viewMode: .Primary, animated: true)
-                } else if translation.y < 0 && !draggingFromTopToBottom {
-                    layoutChildViews(viewMode: .Secondary, animated: true)
+                if panGestureTranslation.y > 0 && draggingFromTopToBottom {
+                    layoutChildViews(displayState: .Primary, animated: true)
+                } else if panGestureTranslation.y < 0 && !draggingFromTopToBottom {
+                    layoutChildViews(displayState: .Secondary, animated: true)
                 } else {
-                    layoutChildViews(viewMode: .Both, animated: true)
+                    layoutChildViews(displayState: .Both, animated: true)
                 }
             case .Primary:
-                if translation.y < 0 && !draggingFromTopToBottom {
-                    layoutChildViews(viewMode: .Both, animated: true)
+                if panGestureTranslation.y < 0 && !draggingFromTopToBottom {
+                    layoutChildViews(displayState: .Both, animated: true)
                 } else {
-                    layoutChildViews(viewMode: .Primary, animated: true)
+                    layoutChildViews(displayState: .Primary, animated: true)
                 }
             case .Secondary:
-                if translation.y > 0 && draggingFromTopToBottom {
-                    layoutChildViews(viewMode: .Both, animated: true)
+                if panGestureTranslation.y > 0 && draggingFromTopToBottom {
+                    layoutChildViews(displayState: .Both, animated: true)
                 } else {
-                    layoutChildViews(viewMode: .Secondary, animated: true)
+                    layoutChildViews(displayState: .Secondary, animated: true)
                 }
             }
             
-            translation = CGPointZero
+            panGestureTranslation = CGPointZero
             recognizer.setTranslation(CGPointZero, inView: view)
             
-            currentGestureState.value = .Ended
+            viewState.gestureState = GestureState.Ended
         default:
             break
         }

@@ -7,14 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A63F31921B7DBBA9006EF50F /* ViewStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63F31911B7DBBA9006EF50F /* ViewStateTests.swift */; };
 		A6B921321B241ECB007C8FCA /* BisectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B921311B241ECB007C8FCA /* BisectionViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6B921381B241ECB007C8FCA /* BisectionViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B9212C1B241ECB007C8FCA /* BisectionViewController.framework */; };
 		A6B9213F1B241ECB007C8FCA /* BisectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B9213E1B241ECB007C8FCA /* BisectionViewControllerTests.swift */; };
-		A6B9214D1B241FEA007C8FCA /* ViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B9214C1B241FEA007C8FCA /* ViewMode.swift */; };
-		A6B9214F1B242005007C8FCA /* GestureState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B9214E1B242005007C8FCA /* GestureState.swift */; };
 		A6B921511B24202F007C8FCA /* SwiftyEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B921501B24202F007C8FCA /* SwiftyEvents.framework */; };
-		A6B921541B24208D007C8FCA /* CurrentViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B921531B24208D007C8FCA /* CurrentViewMode.swift */; };
-		A6B921561B24219B007C8FCA /* CurrentGestureState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B921551B24219B007C8FCA /* CurrentGestureState.swift */; };
 		A6B921581B2422BA007C8FCA /* BisectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B921571B2422BA007C8FCA /* BisectionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,17 +26,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A63F31911B7DBBA9006EF50F /* ViewStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStateTests.swift; sourceTree = "<group>"; };
 		A6B9212C1B241ECB007C8FCA /* BisectionViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BisectionViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6B921301B241ECB007C8FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6B921311B241ECB007C8FCA /* BisectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BisectionViewController.h; sourceTree = "<group>"; };
 		A6B921371B241ECB007C8FCA /* BisectionViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BisectionViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6B9213D1B241ECB007C8FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6B9213E1B241ECB007C8FCA /* BisectionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BisectionViewControllerTests.swift; sourceTree = "<group>"; };
-		A6B9214C1B241FEA007C8FCA /* ViewMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewMode.swift; sourceTree = "<group>"; };
-		A6B9214E1B242005007C8FCA /* GestureState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureState.swift; sourceTree = "<group>"; };
 		A6B921501B24202F007C8FCA /* SwiftyEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyEvents.framework; path = Carthage/Build/iOS/SwiftyEvents.framework; sourceTree = "<group>"; };
-		A6B921531B24208D007C8FCA /* CurrentViewMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentViewMode.swift; sourceTree = "<group>"; };
-		A6B921551B24219B007C8FCA /* CurrentGestureState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentGestureState.swift; sourceTree = "<group>"; };
 		A6B921571B2422BA007C8FCA /* BisectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BisectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,10 +81,6 @@
 			children = (
 				A6B921311B241ECB007C8FCA /* BisectionViewController.h */,
 				A6B921571B2422BA007C8FCA /* BisectionViewController.swift */,
-				A6B921551B24219B007C8FCA /* CurrentGestureState.swift */,
-				A6B921531B24208D007C8FCA /* CurrentViewMode.swift */,
-				A6B9214E1B242005007C8FCA /* GestureState.swift */,
-				A6B9214C1B241FEA007C8FCA /* ViewMode.swift */,
 				A6B9212F1B241ECB007C8FCA /* Supporting Files */,
 			);
 			path = BisectionViewController;
@@ -108,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				A6B9213E1B241ECB007C8FCA /* BisectionViewControllerTests.swift */,
+				A63F31911B7DBBA9006EF50F /* ViewStateTests.swift */,
 				A6B9213C1B241ECB007C8FCA /* Supporting Files */,
 			);
 			path = BisectionViewControllerTests;
@@ -160,6 +151,7 @@
 				A6B921331B241ECB007C8FCA /* Sources */,
 				A6B921341B241ECB007C8FCA /* Frameworks */,
 				A6B921351B241ECB007C8FCA /* Resources */,
+				A63F31931B7DBD7B006EF50F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -223,16 +215,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A63F31931B7DBD7B006EF50F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyEvents.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A6B921271B241ECB007C8FCA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6B9214D1B241FEA007C8FCA /* ViewMode.swift in Sources */,
-				A6B921541B24208D007C8FCA /* CurrentViewMode.swift in Sources */,
-				A6B9214F1B242005007C8FCA /* GestureState.swift in Sources */,
 				A6B921581B2422BA007C8FCA /* BisectionViewController.swift in Sources */,
-				A6B921561B24219B007C8FCA /* CurrentGestureState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A63F31921B7DBBA9006EF50F /* ViewStateTests.swift in Sources */,
 				A6B9213F1B241ECB007C8FCA /* BisectionViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
