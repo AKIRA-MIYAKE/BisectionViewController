@@ -16,39 +16,35 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A63915BD1ACC11B500B352A2"
                BuildableName = "SwiftyEvents.framework"
-               BlueprintName = "SwiftyEvents"
-               ReferencedContainer = "container:SwiftyEvents.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A63915C81ACC11B500B352A2"
-               BuildableName = "SwiftyEventsTests.xctest"
-               BlueprintName = "SwiftyEventsTests"
+               BlueprintName = "SwiftyEvents-iOS"
                ReferencedContainer = "container:SwiftyEvents.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A6067F751B80830E0089F856"
+               BuildableName = "SwiftyEvents-watchOSTests.xctest"
+               BlueprintName = "SwiftyEvents-watchOSTests"
+               ReferencedContainer = "container:SwiftyEvents.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "A63915C81ACC11B500B352A2"
-               BuildableName = "SwiftyEventsTests.xctest"
-               BlueprintName = "SwiftyEventsTests"
+               BuildableName = "SwiftyEvents-iOSTests.xctest"
+               BlueprintName = "SwiftyEvents-iOSTests"
                ReferencedContainer = "container:SwiftyEvents.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -58,7 +54,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A63915BD1ACC11B500B352A2"
             BuildableName = "SwiftyEvents.framework"
-            BlueprintName = "SwiftyEvents"
+            BlueprintName = "SwiftyEvents-iOS"
             ReferencedContainer = "container:SwiftyEvents.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,11 +62,11 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -80,7 +76,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A63915BD1ACC11B500B352A2"
             BuildableName = "SwiftyEvents.framework"
-            BlueprintName = "SwiftyEvents"
+            BlueprintName = "SwiftyEvents-iOS"
             ReferencedContainer = "container:SwiftyEvents.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -88,17 +84,17 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A63915BD1ACC11B500B352A2"
             BuildableName = "SwiftyEvents.framework"
-            BlueprintName = "SwiftyEvents"
+            BlueprintName = "SwiftyEvents-iOS"
             ReferencedContainer = "container:SwiftyEvents.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
