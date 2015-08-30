@@ -126,7 +126,9 @@ public class BisectionViewController: UIViewController {
         setupChildViewController(secondaryViewController)
         
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGestureRecognizer:")
-        panGestureRecognizer.map { view.addGestureRecognizer($0) }
+        if let recognizer = panGestureRecognizer {
+            view.addGestureRecognizer(recognizer)
+        }
     }
     
     public override func viewDidLayoutSubviews() {
