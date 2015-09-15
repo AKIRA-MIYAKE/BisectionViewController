@@ -28,14 +28,14 @@ class ViewStateTests: XCTestCase {
         
         let state = ViewState(displayState: .Both)
         
-        state.emitter.on(.DidSetDisplayState) { state in
+        state.emitter.on(.DidSetDisplayState) { (viewState) -> Void in
             ea.fulfill()
-            XCTAssertEqual(state.displayState, .Primary, "Pass")
+            XCTAssertEqual(viewState.displayState, DisplayState.Primary)
         }
         
-        state.emitter.on(.DidSetGestureState) { state in
+        state.emitter.on(.DidSetGestureState) { (viewState) -> Void in
             eb.fulfill()
-            XCTAssertEqual(state.gestureState, .Began, "Pass")
+            XCTAssertEqual(viewState.gestureState, GestureState.Began)
         }
         
         state.displayState = DisplayState.Primary

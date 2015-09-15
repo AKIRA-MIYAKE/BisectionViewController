@@ -14,63 +14,49 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6B9212B1B241ECB007C8FCA"
-               BuildableName = "BisectionViewController.framework"
-               BlueprintName = "BisectionViewController"
-               ReferencedContainer = "container:BisectionViewController.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6B921361B241ECB007C8FCA"
-               BuildableName = "BisectionViewControllerTests.xctest"
-               BlueprintName = "BisectionViewControllerTests"
-               ReferencedContainer = "container:BisectionViewController.xcodeproj">
+               BlueprintIdentifier = "A63915BD1ACC11B500B352A2"
+               BuildableName = "SwiftyEvents.framework"
+               BlueprintName = "SwiftyEvents-iOS"
+               ReferencedContainer = "container:SwiftyEvents.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6B921361B241ECB007C8FCA"
-               BuildableName = "BisectionViewControllerTests.xctest"
-               BlueprintName = "BisectionViewControllerTests"
-               ReferencedContainer = "container:BisectionViewController.xcodeproj">
+               BlueprintIdentifier = "A63915C81ACC11B500B352A2"
+               BuildableName = "SwiftyEvents-iOSTests.xctest"
+               BlueprintName = "SwiftyEvents-iOSTests"
+               ReferencedContainer = "container:SwiftyEvents.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A6B9212B1B241ECB007C8FCA"
-            BuildableName = "BisectionViewController.framework"
-            BlueprintName = "BisectionViewController"
-            ReferencedContainer = "container:BisectionViewController.xcodeproj">
+            BlueprintIdentifier = "A63915BD1ACC11B500B352A2"
+            BuildableName = "SwiftyEvents.framework"
+            BlueprintName = "SwiftyEvents-iOS"
+            ReferencedContainer = "container:SwiftyEvents.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -78,28 +64,28 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A6B9212B1B241ECB007C8FCA"
-            BuildableName = "BisectionViewController.framework"
-            BlueprintName = "BisectionViewController"
-            ReferencedContainer = "container:BisectionViewController.xcodeproj">
+            BlueprintIdentifier = "A63915BD1ACC11B500B352A2"
+            BuildableName = "SwiftyEvents.framework"
+            BlueprintName = "SwiftyEvents-iOS"
+            ReferencedContainer = "container:SwiftyEvents.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A6B9212B1B241ECB007C8FCA"
-            BuildableName = "BisectionViewController.framework"
-            BlueprintName = "BisectionViewController"
-            ReferencedContainer = "container:BisectionViewController.xcodeproj">
+            BlueprintIdentifier = "A63915BD1ACC11B500B352A2"
+            BuildableName = "SwiftyEvents.framework"
+            BlueprintName = "SwiftyEvents-iOS"
+            ReferencedContainer = "container:SwiftyEvents.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

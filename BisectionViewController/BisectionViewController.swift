@@ -126,7 +126,9 @@ public class BisectionViewController: UIViewController {
         setupChildViewController(secondaryViewController)
         
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGestureRecognizer:")
-        panGestureRecognizer.map { view.addGestureRecognizer($0) }
+        if let recognizer = panGestureRecognizer {
+            view.addGestureRecognizer(recognizer)
+        }
     }
     
     public override func viewDidLayoutSubviews() {
@@ -153,7 +155,7 @@ public class BisectionViewController: UIViewController {
         controller.removeFromParentViewController()
     }
     
-    private func layoutChildViews(#displayState: DisplayState, animated: Bool) {
+    private func layoutChildViews(displayState displayState: DisplayState, animated: Bool) {
         let width: CGFloat = view.frame.size.width
         let height: CGFloat = view.frame.size.height
         
@@ -193,8 +195,7 @@ public class BisectionViewController: UIViewController {
         }
     }
     
-    private func updateChildViewsLayout(#difference: CGPoint, displayState: DisplayState) {
-        let xDiff = difference.x
+    private func updateChildViewsLayout(difference difference: CGPoint, displayState: DisplayState) {
         let yDiff = difference.y
         
         let currentPrimaryViewFrame = primaryViewController.view.frame
