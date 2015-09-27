@@ -18,9 +18,16 @@ public enum DisplayState {
 
 
 public enum GestureState {
+    
+    public enum Direction {
+        case None
+        case Up
+        case Down
+    }
+    
     case Began
     case Changed
-    case Ended
+    case Ended(Direction)
 }
 
 
@@ -56,7 +63,7 @@ public class ViewState {
     public init(displayState: DisplayState) {
         self.displayState = displayState
         
-        gestureState = GestureState.Ended
+        gestureState = GestureState.Ended(.None)
     }
     
 }
@@ -264,7 +271,11 @@ public class BisectionViewController: UIViewController {
             panGestureTranslation = CGPointZero
             recognizer.setTranslation(CGPointZero, inView: view)
             
-            viewState.gestureState = GestureState.Ended
+            if draggingFromTopToBottom {
+                viewState.gestureState = GestureState.Ended(.Down)
+            } else {
+                viewState.gestureState = GestureState.Ended(.Up)
+            }
         default:
             break
         }
