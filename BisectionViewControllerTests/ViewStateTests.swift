@@ -35,7 +35,6 @@ class ViewStateTests: XCTestCase {
         
         state.emitter.on(.DidSetGestureState) { (viewState) -> Void in
             eb.fulfill()
-            XCTAssertEqual(viewState.gestureState, GestureState.Began)
         }
         
         state.displayState = DisplayState.Primary
