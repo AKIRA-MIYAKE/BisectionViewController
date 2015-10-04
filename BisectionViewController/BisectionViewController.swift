@@ -208,17 +208,44 @@ public class BisectionViewController: UIViewController {
         let currentPrimaryViewFrame = primaryViewController.view.frame
         let currentSecondaryViewFrame = secondaryViewController.view.frame
         
-        let primaryViewFrame = CGRectMake(
-            0,
-            0,
-            currentPrimaryViewFrame.size.width,
-            currentPrimaryViewFrame.size.height + yDiff)
+        let primaryViewFrame: CGRect
+        let secondaryViewFrame: CGRect
         
-        let secondaryViewFrame = CGRectMake(
-            0,
-            currentSecondaryViewFrame.origin.y + yDiff,
-            currentSecondaryViewFrame.size.width,
-            currentSecondaryViewFrame.size.height - yDiff)
+        let isRequireUpdate: Bool
+        
+        switch viewState.displayState {
+        case .Both:
+            isRequireUpdate = true
+        case .Primary:
+            if yDiff < 0 {
+                isRequireUpdate = true
+            } else {
+                isRequireUpdate = false
+            }
+        case .Secondary:
+            if yDiff > 0 {
+                isRequireUpdate = true
+            } else {
+                isRequireUpdate = false
+            }
+        }
+        
+        if isRequireUpdate {
+            primaryViewFrame = CGRectMake(
+                0,
+                0,
+                currentPrimaryViewFrame.size.width,
+                currentPrimaryViewFrame.size.height + yDiff)
+            
+            secondaryViewFrame = CGRectMake(
+                0,
+                currentSecondaryViewFrame.origin.y + yDiff,
+                currentSecondaryViewFrame.size.width,
+                currentSecondaryViewFrame.size.height - yDiff)
+        } else {
+            primaryViewFrame = currentPrimaryViewFrame
+            secondaryViewFrame = currentSecondaryViewFrame
+        }
         
         primaryViewController.view.frame = primaryViewFrame
         secondaryViewController.view.frame = secondaryViewFrame
